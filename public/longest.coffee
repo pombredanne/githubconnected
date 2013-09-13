@@ -33,7 +33,7 @@ svg.call d3.behavior.drag().on "drag", ->
 svg.call d3.behavior.zoom().on "zoom", ->
 	svg.attr "transform", "translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")"
 
-d3.json '/longest.json', (error, graph) ->
+d3.json 'longest.json', (error, graph) ->
 
 	d3.select('#graph-loading').remove();
 
@@ -79,11 +79,6 @@ d3.json '/longest.json', (error, graph) ->
 			d.target.x
 		.attr "y2", (d) ->
 			d.target.y
-
-		#		node.attr "cx", (d) ->
-		#			d.x
-		#		.attr "cy", (d) ->
-		#			d.y
 
 		node.attr "transform", (d) ->
 			"translate(" + d.x + "," + d.y + ")"

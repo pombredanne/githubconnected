@@ -32,7 +32,7 @@ svg.call d3.behavior.drag().on "drag", ->
 svg.call d3.behavior.zoom().on "zoom", ->
 	svg.attr "transform", "translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")"
 
-d3.json '/nodes.json', (error, graph) ->
+d3.json 'nodes.json', (error, graph) ->
 
 	d3.select('#graph-loading').remove();
 

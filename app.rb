@@ -4,8 +4,6 @@ require 'yajl'
 
 =begin
 
-	create db: rake neo4j:create
-
 	neo4j data location on mac osx with homebrew: cd /usr/local/Cellar/neo4j/community-1.9.2-unix/libexec
 	to clear the db: neo4j stop && rm -rf data/* && neo4j start
 
@@ -33,17 +31,15 @@ def is_rake
 end
 
 def node_cache_file
-	'public/nodes_cache.json'
+	'public/nodes.json'
 end
 
 def longest_cache_file
-	'public/longest_path_cache.json'
+	'public/longest.json'
 end
 
 # for "rake neo4j:create"
 def create_graph
-
-	File.delete(node_cache_file) if File.exist?(node_cache_file)
 
 	neo = Neography::Rest.new(ENV['NEO4J_URL'] || 'http://localhost:7474')
 	graph_exists = nil
@@ -156,7 +152,7 @@ def get_users_for_repo(neo, repo)
 
 end
 
-# get the relationsgips for a repo, with user id and user name
+# get the relationships for a repo, with user id and user name
 def get_relationships_for_repo(neo, repo)
 
 	cypher_query =  ' START user = node:nodes_index(type = "user"), repo = node:nodes_index(type = "repo")'
@@ -182,7 +178,7 @@ def find_longest_path(neo)
 
 end
 
-# find the longest path in the graph
+# build json for longest paths
 def get_longest_path(clear_cache = false)
 
 	File.delete(longest_cache_file) if clear_cache && File.exist?(longest_cache_file)
@@ -244,7 +240,7 @@ def get_longest_path(clear_cache = false)
 end
 
 
-# get the relationships for all nodes
+# build json for all nodes
 def get_relationships(clear_cache = false)
 
 	File.delete(node_cache_file) if clear_cache && File.exist?(node_cache_file)
@@ -334,6 +330,9 @@ end
 get '/' do
 	erb :index
 end
+get '/index.html' do
+	erb :index
+end
 
 # get json for all repositories and their relationships
 get '/nodes.json' do
@@ -345,10 +344,10 @@ get '/longest.json' do
 	get_longest_path
 end
 
-get '/nodes' do
+get '/nodes.html' do
 	erb :nodes
 end
 
-get '/longest' do
+get '/longest.html' do
 	erb :longest
 end
