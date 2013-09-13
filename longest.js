@@ -27,7 +27,7 @@
     return svg.attr("transform", "translate(" + d3.event.translate + ") scale(" + d3.event.scale + ")");
   }));
 
-  d3.json('/longest.json', function(error, graph) {
+  d3.json('longest.json', function(error, graph) {
     var link, node;
     d3.select('#graph-loading').remove();
     layout.nodes(graph.nodes).links(graph.links).start();
