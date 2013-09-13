@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Longest path - Github Connected</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+
+        .node title {
+            color:#000;
+            font: 10px sans-serif;
+        }
+
+        .link {
+            stroke: #999;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <h1 class="page-header"><a href="index.html">Github connected</a> - Longest path</h1>
+        <p><strong>What does this show?</strong> The top 5 longest paths. Repositories are blue, and users orange. <a href="/longest.json">JSON available here</a>.</p>
+    </div>
+    <div id="graph" class="row">
+        <div class="col-md-6 col-md-offset-3" id="graph-loading" style="margin-top:80px; text-align:center;">
+            Getting data...<br /><br />
+            <div class="progress progress-striped active">
+                <div class="progress-bar"  role="progressbar" style="width: 100%">
+                </div>
+            </div>
+        </div>
+        <div id="graph-container"></div>
+    </div>
+</div>
+
+<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="longest.js" charset="utf-8"></script>
+
+</body>
+</html>
