@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Github Connected</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<style>
+
+			.node title {
+				color:#000;
+				font: 10px sans-serif;
+			}
+
+			.link {
+				stroke: #ccc;
+			}
+
+		</style>
+	</head>
+	<body>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h1 class="page-header">Github connected</h1>
+					<p>The data set is 16k results of randomly selected Github archive data, <span title="FollowEvent, ForkEvent, ForkApplyEvent, IssueCommentEvent, IssuesEvent, MemberEvent, PullRequestEvent, PullRequestReviewCommentEvent, PushEvent, WatchEvent" style="border-bottom:1px dotted #999">selected by events</span>.</p>
+					<p><strong>Things you should know</strong></p>
+					<ol>
+						<li>This data set is limited to 16k rows.. why? Because Google BigQuery wanted me to pay for more.</li>
+						<li>The selection was random, and there's no additional meta data attached; only repo name and user name.. why? Because Google wanted me to pay for more.</li>
+						<li>Built using neo4j and ruby, primarily to find out exactly what neo4j does. Graphs obviously.</li>
+					</ol>
+					<h2>Graphs</h2>
+					<a href="/nodes"><h3>Node connections</h3></a>
+					<p>Shows all the connections between users and repositories. Data set contains 3843 nodes, and 3269 links... so is quite intensive to load.</p>
+					<a href="/longest"><h3>Longest path</h3></a>
+					<p>Find the longest path in the graph.</p>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>

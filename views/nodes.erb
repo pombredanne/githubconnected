@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nodes - Github Connected</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<style>
+
+		.node title {
+			color:#000;
+			font: 10px sans-serif;
+		}
+
+		.link {
+			stroke: red;
+		}
+
+	</style>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<h1 class="page-header"><a href="/">Github connected</a> - Nodes</h1>
+		<p><strong>What does this show?</strong> The connections between users and the repositories they have been active with. Any repo with less than 3 connections is boring and ignored. Data set contains 3843 nodes, and 3269 links. Repositories are blue, and users orange. <a href="/nodes.json">JSON available here</a>.</p>
+	</div>
+	<div id="graph" class="row">
+		<div class="col-md-6 col-md-offset-3" id="graph-loading" style="margin-top:80px; text-align:center;">
+			Getting data...<br /><br />
+			<div class="progress progress-striped active">
+				<div class="progress-bar"  role="progressbar" style="width: 100%">
+				</div>
+			</div>
+		</div>
+		<div id="graph-container"></div>
+	</div>
+</div>
+
+<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="nodes.js" charset="utf-8"></script>
+
+</body>
+</html>
